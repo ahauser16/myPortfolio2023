@@ -1,7 +1,7 @@
-body {
+ body {
   margin: 0 auto;
-  max-width: 900px;
-}
+padding: 0}
+/*
 nav ul {
   display: flex;
   list-style-type: none;
@@ -13,9 +13,6 @@ nav ul {
 nav a {
   text-decoration: none;
   display: inline-block;
-  padding: 1rem;
-}
-.main {
   padding: 1rem;
 }
 
@@ -31,25 +28,4 @@ nav a.active {
 }
 .main ul li {
   margin-right: 1rem;
-}
-
-.dashboard {
-  padding: 1rem 0;
-}
-
-ul.orders {
-  flex-direction: column;
-  border: 1px solid;
-  padding: 0.5rem;
-}
-.orders li {
-  padding: 0.5rem 0;
-}
-ul.invoices {
-  flex-direction: column;
-  border: 1px solid;
-  padding: 0.5rem;
-}
-.invoices li {
-  padding: 0.5rem 0;
-}
+} */

@@ -63,8 +63,10 @@ export const Quotes = () => {
 // PassingURLparametersStep3-> In the OrderDetails component, we make use of the useParams hook that can be imported from the react-router-dom to retrieve the value of orderId and display it.
 export const OrderDetails = () => {
   const params = useParams();
+
   // https://www.codingdeft.com/posts/react-router-tutorial/#navigating-programmatically-to-a-route
-  //NavProgToRoute_Step1->If you want to perform navigation on certain user action, say on click of a button, react router provides us with a hook for it called useNavigate. Now we have order details page, we can add a link back to orders page and implement it using useNavigate.
+
+  //NavProgToRoute_Step1->If you want to perform navigation on certain user action such as clicking a button, react router provides us with a hook for it called useNavigate. Now we have order details page, we can add a link back to orders page and implement it using useNavigate.
   const navigate = useNavigate();
 
   const onBackClick = (e) => {
