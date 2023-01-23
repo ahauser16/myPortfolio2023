@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import { Link, Route, Routes, Outlet } from "react-router-dom";
 import { Nomatch } from "./Components/Nomatch";
-import Logo from "../src/logo.svg";
 import styled from "styled-components";
+import "./App.scss";
+import introPicLeft from "./images/laylaTwo.jpg";
+import introPicRight from "./images/charlieFour.jpg";
+import aboutMePic from "./images/scubaOne.jpg";
+import portPicOne from "./images/icelandFourCropped.jpg";
+import portPicTwo from "./images/icelandOneCropped.jpg";
+import portPicFive from "./images/icelandSixCropped.jpg";
+import portPicFour from "./images/icelandThreeCropped.jpg";
+import portPicThree from "./images/icelandTwoCropped.jpg";
+import { IconContext } from "react-icons";
+import { SiLinkedin } from "react-icons/si";
+import { SiInstagram } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
+import { SiFacebook } from "react-icons/si";
 
 function App() {
   return (
@@ -94,12 +107,6 @@ const NavbarLinkExtended = styled(Link)`
   margin: 10px;
 `;
 
-// const PortLogo = styled.img`
-//   margin: 10px;
-//   max-width: 100px;
-//   height: auto;
-// `;
-
 const OpenLinksButton = styled.button`
   width: 70px;
   height: 50px;
@@ -121,21 +128,11 @@ function Layout() {
         <NavbarInnerContainer>
           <LeftContainer>
             <NavbarLinkContainer>
-              <NavbarLink to="/about">
-                About
-              </NavbarLink>
-              <NavbarLink to="/experience">
-                Experience
-              </NavbarLink>
-              <NavbarLink to="/projects">
-                Projects
-              </NavbarLink>
-              <NavbarLink to="/contact">
-                Contact
-              </NavbarLink>
-              <NavbarLink to="/resume">
-                Resume
-              </NavbarLink>
+              <NavbarLink to="/about">About</NavbarLink>
+              <NavbarLink to="/experience">Experience</NavbarLink>
+              <NavbarLink to="/projects">Projects</NavbarLink>
+              <NavbarLink to="/contact">Contact</NavbarLink>
+              <NavbarLink to="/resume">Resume</NavbarLink>
               <OpenLinksButton
                 onClick={() => {
                   setExtendNavbar((curr) => !curr);
@@ -146,13 +143,8 @@ function Layout() {
             </NavbarLinkContainer>
           </LeftContainer>
           <RightContainer>
-            {/* <PortLogo src={Logo} /> */}
-            <NavbarLink to="/lightOrDark">
-              LightvDark
-            </NavbarLink>
-            <NavbarLink to="/">
-              HomeLogo
-            </NavbarLink>
+            <NavbarLink to="/lightOrDark">LightvDark</NavbarLink>
+            <NavbarLink to="/">HomeLogo</NavbarLink>
           </RightContainer>
         </NavbarInnerContainer>
         {extendNavbar && (
@@ -160,21 +152,11 @@ function Layout() {
             <NavbarLinkExtended to="/" end>
               Home
             </NavbarLinkExtended>
-            <NavbarLinkExtended to="/about">
-              About
-            </NavbarLinkExtended>
-            <NavbarLinkExtended to="/experience">
-              Experience
-            </NavbarLinkExtended>
-            <NavbarLinkExtended to="/projects">
-              Projects
-            </NavbarLinkExtended>
-            <NavbarLinkExtended to="/contact">
-              Contact
-            </NavbarLinkExtended>
-            <NavbarLinkExtended to="/resume">
-              Resume
-            </NavbarLinkExtended>
+            <NavbarLinkExtended to="/about">About</NavbarLinkExtended>
+            <NavbarLinkExtended to="/experience">Experience</NavbarLinkExtended>
+            <NavbarLinkExtended to="/projects">Projects</NavbarLinkExtended>
+            <NavbarLinkExtended to="/contact">Contact</NavbarLinkExtended>
+            <NavbarLinkExtended to="/resume">Resume</NavbarLinkExtended>
           </NavbarExtendedContainer>
         )}
       </NavbarContainer>
@@ -218,20 +200,260 @@ const Projects = () => {
   );
 };
 
-//BELOW IS ALL NAVBAR CODE
+//ABOVE IS ALL NAVBAR CODE
+/////////////////////////////////////
 
 export const Home = () => {
-  return <div>You are in Home page</div>;
+  function LargeLinkedinIcon() {
+    return (
+      <IconContext.Provider
+        value={{ color: "white", size: "50px", title: "LinkedIn logo" }}
+      >
+        <div className="socialIconContainer">
+          <SiLinkedin />
+        </div>
+      </IconContext.Provider>
+    );
+  }
+
+  function LargeInstaIcon() {
+    return (
+      <IconContext.Provider
+        value={{ color: "white", size: "50px", title: "Instagram logo" }}
+      >
+        <div className="socialIconContainer">
+          <SiInstagram />
+        </div>
+      </IconContext.Provider>
+    );
+  }
+
+  function LargeGithubIcon() {
+    return (
+      <IconContext.Provider
+        value={{ color: "white", size: "50px", title: "Github logo" }}
+      >
+        <div className="socialIconContainer">
+          <SiGithub />
+        </div>
+      </IconContext.Provider>
+    );
+  }
+
+  function LargeFacebookIcon() {
+    return (
+      <IconContext.Provider
+        value={{ color: "white", size: "50px", title: "Facebook logo" }}
+      >
+        <div className="socialIconContainer">
+          <SiFacebook />
+        </div>
+      </IconContext.Provider>
+    );
+  }
+
+  return (
+    <>
+      <div className="welcome">
+        <h1>
+          Welcome to my<span>Portfolio</span>
+        </h1>
+      </div>
+
+      <section className="introCont">
+        <div className="introLeft">
+          <img src={introPicLeft} alt="hounds running" />
+        </div>
+        <div className="introMiddle">
+          <h2>Making it happen</h2>
+          <p>
+            Lorem ipsum Anim officia irure est aliquip exercitation magna
+            deserunt do amet ut pariatur proident dolore dolore. Quis labore
+            ipsum irure exercitation eiusmod officia aliqua do. Ullamco aliquip
+            aute consectetur eiusmod reprehenderit do laborum id laborum veniam
+            ea sit consectetur eu. Incididunt qui sunt reprehenderit sunt qui
+            qui laborum culpa pariatur amet. Reprehenderit laborum eiusmod
+            cillum minim officia nisi veniam sunt ea esse ad.
+          </p>
+          <p>
+            Lorem ipsum Anim officia irure est aliquip exercitation magna
+            deserunt do amet ut pariatur proident dolore dolore. Quis labore
+            ipsum irure exercitation eiusmod officia aliqua do. Ullamco aliquip
+            aute consectetur eiusmod reprehenderit do laborum id laborum veniam
+            ea sit consectetur eu. Incididunt qui sunt reprehenderit sunt qui
+            qui laborum culpa pariatur amet. Reprehenderit laborum eiusmod
+            cillum minim officia nisi veniam sunt ea esse ad.
+          </p>
+        </div>
+        <div className="introRight">
+          <img src={introPicRight} alt="treeing walker coonhound running" />
+        </div>
+      </section>
+
+      <section className="aboutMe">
+        <img className="aboutImg" src={aboutMePic} alt="arthur on a boat" />
+        <h1 className="aboutTitle">Arthur John Hauser</h1>
+        <h2 className="aboutSubtitle">MERN Stack Developer</h2>
+        <div className="aboutText">
+          <p>
+            Laboris do amet veniam voluptate nulla nostrud labore sint. Ea et
+            duis eiusmod deserunt reprehenderit proident. Voluptate ad enim
+            proident commodo nisi reprehenderit ad veniam ex nostrud aliqua.
+          </p>
+          <p>
+            Laboris do amet veniam voluptate nulla nostrud labore sint. Ea et
+            duis eiusmod deserunt reprehenderit proident. Voluptate ad enim
+            proident commodo nisi reprehenderit ad veniam ex nostrud aliqua.
+          </p>
+        </div>
+      </section>
+
+      <section className="portfolio" id="portfolio">
+        <h1>My Work</h1>
+        <div className="portfolioItems">
+          {/* Portfolio Item1 */}
+          <figure class="portfolioItem ">
+            <img
+              className="portfolioImg"
+              src={portPicOne}
+              alt="portfolio item"
+            />
+            <figcaption>
+              <h2 className="portfolioTitle">Project Name</h2>
+              <p className="portfolioDescription">
+                A short description placehold!
+              </p>
+              <a href="#" className="portfolioLink">
+                More info
+              </a>
+            </figcaption>
+          </figure>
+
+          {/* Portfolio Item2 */}
+          <figure class="portfolioItem featured">
+            <img
+              className="portfolioImg"
+              src={portPicTwo}
+              alt="a fjord in Iceland on a sunny day"
+            />
+            <figcaption>
+              <h2 className="portfolioTitle">Project Name</h2>
+              <p className="portfolioDescription">
+                A short description placehold!
+              </p>
+              <a href="#" className="portfolioLink">
+                More info
+              </a>
+            </figcaption>
+          </figure>
+
+          {/* Portfolio Item3 */}
+          <figure class="portfolioItem ">
+            <img
+              className="portfolioImg"
+              src={portPicThree}
+              alt="hot springs in Iceland"
+            />
+            <figcaption>
+              <h2 className="portfolioTitle">Project Name</h2>
+              <p className="portfolioDescription">
+                A short description placehold!
+              </p>
+              <a href="#" className="portfolioLink">
+                More info
+              </a>
+            </figcaption>
+          </figure>
+
+          {/* Portfolio Item4 */}
+          <figure class="portfolioItem ">
+            <img
+              className="portfolioImg"
+              src={portPicFour}
+              alt="giant fjord and a small house"
+            />
+            <figcaption>
+              <h2 className="portfolioTitle">Project Name</h2>
+              <p className="portfolioDescription">
+                A short description placehold!
+              </p>
+              <a href="#" className="portfolioLink">
+                More info
+              </a>
+            </figcaption>
+          </figure>
+
+          {/* Portfolio Item5 */}
+          <figure class="portfolioItem">
+            <img
+              className="portfolioImg"
+              src={portPicFive}
+              alt="greenland as seen from space"
+            />
+            <figcaption>
+              <h2 className="portfolioTitle">Project Name</h2>
+              <p className="portfolioDescription">
+                A short description placehold!
+              </p>
+              <a href="#" className="portfolioLink">
+                More info
+              </a>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="contact">
+        <h1>Contact me</h1>
+        <form action="">
+          <label className="name">
+            Name:
+            <input type="text" id="name" />
+          </label>
+
+          <label className="email">
+            Email:
+            <input type="email" />
+          </label>
+
+          <label message="message">
+            Message:
+            <textarea name="" id="message"></textarea>
+          </label>
+
+          <input class="button" type="submit" value="SEND" />
+        </form>
+      </section>
+
+      <footer>
+        <p>Follow me on social media</p>
+        <div className="socialIcons">
+          {/* <div className="socialIconContainer">
+            <SiLinkedin />
+          </div> */}
+          <LargeFacebookIcon />
+          <LargeGithubIcon />
+          <LargeInstaIcon />
+          <LargeLinkedinIcon />
+        </div>
+        <p className="copyright">Copyright 2023 Arthur John Hauser</p>
+      </footer>
+    </>
+  );
 };
+
 export const About = () => {
   return <div>This is the page where you put details about yourself</div>;
 };
+
 export const Experience = () => {
   return <div>This is where I've worked!</div>;
 };
+
 export const Contact = () => {
   return <div>Contact Me!</div>;
 };
+
 export const Resume = () => {
   return <div>Resume</div>;
 };

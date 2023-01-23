@@ -1,0 +1,97 @@
+.portfolio {
+  text-align: center;
+  background: $light-gray;
+  padding: 5em 0;
+}
+
+.portfolioItems {
+  display: flex;
+  flex-wrap: wrap;
+  @include container($max-width: 75em);
+}
+
+.portfolioItem {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 20rem;
+  //this was my fix but not in demo...
+  margin: 0;
+  //...without setting the margin to zero the spaces between the images were too wide.
+
+  //img are by default inline-block and by changing the display property to block it gets rid of an extra line space that would appear at the bottom of the img
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  figcaption {
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 2em;
+    background: rgba($accent, 0.5);
+    color: $white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: top ease-in-out 250ms;
+  }
+
+  &:hover figcaption,
+  &:focus figcaption {
+    top: 0;
+  }
+}
+
+.portfolioTitle {
+  color: $white;
+  font-size: 2.5rem;
+  margin-bottom: auto;
+}
+
+.portfolioDescription {
+  display: none;
+}
+
+.portfolioLink {
+  color: white;
+  font-weight: $fw-b;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-bottom: 3px solid $white;
+  align-self: flex-start;
+
+  &::after {
+    //   content: url(../img/arrow-white.svg);
+    content: ">";
+    display: inline-block;
+    height: 0.8em;
+    width: 0.7em;
+    margin-left: 0.5em;
+  }
+}
+
+@supports (display: grid) {
+  .portfolioItems {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+  }
+
+  .portfolioItem.featured {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  .featured {
+    .portfolioTitle {
+      font-size: 5rem;
+    }
+
+    .portfolioDescription {
+      display: block;
+    }
+  }
+}

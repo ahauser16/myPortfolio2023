@@ -1,0 +1,50 @@
+.aboutMe {
+  @include container($max-width: 20em);
+  @include clearfix;
+
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+//code below isn't working with my aboutMe pic bcs its too big.
+.aboutImg {
+max-height: 25em;
+
+  @media (min-width: 40em) {
+    float: left;
+    margin-right: 1em;
+  }
+}
+
+.aboutTitle {
+  margin-bottom: 0.25em;
+}
+
+.aboutSubtitle {
+  margin: 0.5em 0;
+}
+
+@supports (display: grid) {
+  .aboutMe {
+    display: grid;
+    grid-template-columns:
+      [port-start] minmax(6em, 1fr) [name-start] minmax(6em, 1fr)
+      [img-end] 2fr;
+  }
+
+  .aboutImg {
+    grid-column: port-start / img-end;
+    grid-row: 1/2;
+  }
+
+  .aboutTitle {
+    grid-column: name/port;
+    grid-row: 1/2;
+    align-self: end;
+  }
+
+  .aboutSubtitle,
+  .aboutText {
+    grid-column: port/port;
+  }
+}
