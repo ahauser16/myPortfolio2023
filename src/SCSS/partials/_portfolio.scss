@@ -77,8 +77,12 @@
   .portfolioItems {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
+    // grid-gap: 1em;
+    @include mq {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
+
 
   .portfolioItem.featured {
     grid-column: 1 / span 2;

@@ -8,8 +8,39 @@
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+
+  @supports (display: grid) {
+    @include mq {
+      display: grid;
+      grid-column: 1fr 1fr;
+      grid-column-gap: 1em;
+      grid-template-areas:
+        "name     email"
+        "message  message"
+        "   .     button";
+
+        .name{
+          grid-area: name;
+        }
+
+        .email{
+          grid-area: email;
+        }
+
+        .message{
+          grid-area: message;
+          textarea{
+            height: 10em;
+          }
+        }
+
+        .button{
+          grid-area: button;
+        }
+    }
+  }
 }
 
 label {
@@ -24,18 +55,19 @@ textarea {
   display: block;
   padding: 0.75em;
   width: 100%;
+  // min-width: 15em;
   background: lighten($light-gray, 7%);
   border: 1px solid $light-gray;
   font-size: 1.2rem;
 }
 
 .button {
-    display: inline-block;
-    width: auto;
-    margin-top: 1em;
-    margin-left: auto;
-    background: $accent;
-    border: none;
-    @include sans-serif($fs: 2.5rem, $color: $white);
-    padding: .5em 1.5em;
+  display: inline-block;
+  width: auto;
+  margin-top: 1em;
+  margin-left: auto;
+  background: $accent;
+  border: none;
+  @include sans-serif($fs: 2.5rem, $color: $white);
+  padding: 0.5em 1.5em;
 }

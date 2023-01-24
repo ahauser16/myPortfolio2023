@@ -290,7 +290,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="aboutMe">
+      <section className="aboutMe" id="about">
         <img className="aboutImg" src={aboutMePic} alt="arthur on a boat" />
         <h1 className="aboutTitle">Arthur John Hauser</h1>
         <h2 className="aboutSubtitle">MERN Stack Developer</h2>
@@ -416,12 +416,12 @@ export const Home = () => {
             <input type="email" />
           </label>
 
-          <label message="message">
+          <label message="message" className="message">
             Message:
             <textarea name="" id="message"></textarea>
           </label>
 
-          <input class="button" type="submit" value="SEND" />
+          <input class="button form-button" type="submit" value="SEND" />
         </form>
       </section>
 
