@@ -1,13 +1,15 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter } from "react-router-dom"
-import App from "./App"
 import "./index.scss"
 
-ReactDOM.render(
+import HomeApp from "./App";
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <HomeApp />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
