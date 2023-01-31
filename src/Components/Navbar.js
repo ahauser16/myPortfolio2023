@@ -1,75 +1,154 @@
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { Nomatch } from "./Nomatch";
-import { VscMenu } from "react-icons/vsc";
-import { VscChromeClose } from "react-icons/vsc";
+import React, { useState, useEffect, useRef } from "react";
+import { HamMenuOpen } from "./Icons";
+import styled from "styled-components";
+import { MyLogo as Logo} from "./Logo";
 
-export const Navbar = () => {
-  const [enableMobileMenu, setEnableMobileMenu] = useState(false);
+export const RespNavbar = () => {
+  const [openDrawer, toggleDrawer] = useState(false);
+  const drawerRef = useRef(null);
 
-  const handleClick = () => setEnableMobileMenu(!enableMobileMenu);
+  useEffect(() => {
+    /* Close the drawer when the user clicks outside of it */
+    const closeDrawer = (event) => {
+      if (drawerRef.current && drawerRef.current.contains(event.target)) {
+        return;
+      }
+
+      toggleDrawer(false);
+    };
+
+    document.addEventListener("mousedown", closeDrawer);
+    return () => document.removeEventListener("mousedown", closeDrawer);
+  }, []);
 
   return (
-    <>
-      <div className="main-menu-desktop-mode">
-        {/* <DesktopMenu /> */}
-      </div>
-      
-      <div className="navbarMobileMode">
-        <div className=".menu-button">
-          {enableMobileMenu ? (
-            <VscMenu onClick={handleClick} />
-          ) : (
-            <VscChromeClose onClick={handleClick} />
-          )}
-        </div>
-      </div>
+    <Navbar.Wrapper>
+      <Logo />
 
-      <Outlet />
-    </>
+      <HamburgerButton.Wrapper onClick={() => toggleDrawer(true)}>
+        <HamburgerButton.Lines />
+      </HamburgerButton.Wrapper>
+
+      <Navbar.Items ref={drawerRef} openDrawer={openDrawer}>
+        <Navbar.Item>Home</Navbar.Item>
+        <Navbar.Item>About</Navbar.Item>
+        <Navbar.Item>Portfolio</Navbar.Item>
+        <Navbar.Item>Contact</Navbar.Item>
+      </Navbar.Items>
+    </Navbar.Wrapper>
   );
 };
-//when you're ready to link another project check out this code on stackblitz.com
-//https://stackblitz.com/github/remix-run/react-router/tree/main/examples/multi-app?file=home%2FApp.jsx
 
-const MobileMenu = () => {
-  <nav>
-    <ul>
-      <li>
-        <Link className="navLink" to="/">
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-      </li>
-      {/* <li>
-      <Link className="navLink" to="/experience">
-        Experience
-      </Link>
-    </li> */}
-      <li>
-        <Link className="navLink" to="/projects">
-          Projects
-        </Link>
-      </li>
-      <li>
-        <Link className="navLink" to="/contact">
-          Contact
-        </Link>
-      </li>
-      <li>
-        <Link className="navLink" to="/resume">
-          Resume
-        </Link>
-      </li>
-      <li className="hidden-mobile-view">
-        <Link className="navLink" to="/lightOrDark">
-          LightvDark
-        </Link>
-      </li>
-    </ul>
-  </nav>;
+const Navbar = {
+  Wrapper: styled.nav`
+    flex: 1;
+    align-self: flex-start;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    z-index: 10;
+    height: 5em;
+    position: absolute;
+    width: 100%;
+
+    @media only screen and (max-width: 40em) {
+      position: fixed;
+      width: 100vw;
+      height: 20vh;
+      bottom: 0;
+    }
+  `,
+  Logo: styled.h1`
+    margin: 0;
+    padding: 0;
+  `,
+  Items: styled.ul`
+    display: flex;
+    list-style: none;
+
+    @media only screen and (max-width: 40em) {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100%;
+      flex-direction: column;
+      background-color: transparent;
+      padding: 1rem 2rem;
+      transition: 0.2s ease-out;
+      transform: ${({ openDrawer }) =>
+        openDrawer ? `translateX(0)` : `translateX(100%)`};
+    }
+  `,
+  Item: styled.li`
+    padding: 0 1rem;
+    cursor: pointer;
+    background-color: rgba(163, 180, 201, 0.5);
+    color: red;
+
+    @media only screen and (max-width: 40em) {
+      padding: 1rem 0;
+    }
+  `,
+};
+
+const HamburgerButton = {
+  Wrapper: styled.button`
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    font-size: 12px;
+
+    display: none;
+
+    @media only screen and (max-width: 40em) {
+      display: block;
+    }
+
+    /* Remove default button styles */
+    border: none;
+    background: transparent;
+    outline: none;
+
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 150%;
+      width: 150%;
+      top: -25%;
+      left: -25%;
+    }
+  `,
+  Lines: styled.div`
+    top: 50%;
+    margin-top: -0.125em;
+
+    &,
+    &:after,
+    &:before {
+      /* Create lines */
+      height: 2px;
+      pointer-events: none;
+      display: block;
+      content: "";
+      width: 100%;
+      background-color: black;
+      position: absolute;
+      background-color: white;
+    }
+
+    &:after {
+      /* Move bottom line below center line */
+      top: -0.8rem;
+    }
+
+    &:before {
+      /* Move top line on top of center line */
+      top: 0.8rem;
+    }
+  `,
 };

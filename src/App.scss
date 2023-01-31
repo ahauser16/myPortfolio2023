@@ -1,4 +1,9 @@
-@import './SCSS/modules/all';
-@import './SCSS/vendor/normalize';
-@import './SCSS/partials/all';
+@import "./SCSS/modules/all";
+@import "./SCSS/vendor/normalize";
+@import "./SCSS/partials/all";
 
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
